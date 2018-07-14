@@ -112,4 +112,10 @@ forWindow(2, myArray, (start, end) => {
 
 ## caveats
 
+#### edge cases
+
 You don't need to worry about the edge cases. If the desired window size is greater or equal to the parent array size, the iterator will be run exactly once: either with the parent array as the window argument in the case of a unary iterator, or with the arguments `(0, parentArray.length)` in the case of a non-unary iterator.
+
+#### variable step size
+
+Currently, the step size cannot be changed. It seems like a rare use-case, so I might not implement it. If you need the step size to be the length of the window, consider using a simple for-loop and the modulus operator.
