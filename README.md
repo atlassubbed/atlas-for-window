@@ -16,7 +16,7 @@ npm install --save atlas-for-window
 
 Sometimes you need to iterate over a window of values in an array, and do something "for each window":
 
-```
+```javascript
 // window size = 2
 [1,2,3,4,5,6]  // main array
 [1,2]          // 1st window
