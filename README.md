@@ -32,12 +32,84 @@ We'd like to do this without polluting our business logic with iteration logic. 
 
 ### highly readable
 
-Todo.
+A single argument gives you a physical window to work with:
+
+```javascript
+const { forWindow } = require("atlas-for-window");
+const myArray = ["a", "b", "c", "d"];
+
+// iterate over all 2-windows in myArray
+forWindow(2, myArray, window => {
+  console.log(window);
+})
+
+// ['a', 'b']
+// ['b', 'c']
+// ['c', 'd']
+```
 
 ### highly performant
 
-Todo.
+Slicing is expensive. Non-unary iterator functions will be given the start and end indexes of the window, which is much, much faster than slicing:
 
-### edge cases
+#### nullary iterator function
 
-Todo.
+```javascript
+...
+forWindow(2, myArray, function(){
+  console.log(arguments[0], arguments[1])
+})
+
+// 0 2
+// 1 3
+// 2 4
+```
+
+#### binary iterator function
+
+```javascript
+...
+forWindow(2, myArray, (start, end) => {
+  console.log(start, end)
+})
+
+// 0 2
+// 1 3
+// 2 4
+```
+
+#### variadic iterator function
+
+```javascript
+...
+forWindow(2, myArray, (...args) => {
+  console.log(...args)
+})
+
+// 0 2
+// 1 3
+// 2 4
+```
+
+#### using start and end indexes
+
+Please note that the end index is non-inclusive, allowing you to use the familiar iteration syntax:
+
+```javascript
+...
+forWindow(2, myArray, (start, end) => {
+  const window = [];
+  for (let i = start, i < end; i++){ // familiar "i < end"
+    window.push(myArray[i])
+  }
+  console.log(window)
+})
+
+// ['a', 'b']
+// ['b', 'c']
+// ['c', 'd']
+```
+
+## caveats
+
+You don't need to worry about the edge cases. If the desired window size is greater or equal to the parent array size, the iterator will be run exactly once: either with the parent array as the window argument in the case of a unary iterator, or with the arguments `(0, parentArray.length)` in the case of a non-unary iterator.
