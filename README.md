@@ -2,7 +2,7 @@
 
 Generalizes iterating over an array with a sliding window.
 
-[![Travis](https://img.shields.io/travis/[username]/[repo].svg)](https://travis-ci.org/[username]/[repo])
+[![Travis](https://img.shields.io/travis/atlassubbed/atlas-for-window.svg)](https://travis-ci.org/atlassubbed/atlas-for-window)
 
 ---
 
