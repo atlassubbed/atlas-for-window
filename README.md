@@ -17,6 +17,7 @@ npm install --save atlas-for-window
 Sometimes you need to iterate over a window of values in an array, and do something "for each window":
 
 ```
+// window size = 2
 [1,2,3,4,5,6]  // main array
 [1,2]          // 1st window
   [2,3]        // 2nd window
@@ -25,6 +26,18 @@ Sometimes you need to iterate over a window of values in an array, and do someth
         [5,6]  // 5th window
 ```
 
+We'd like to do this without polluting our business logic with iteration logic. This library provides a clean API for iterating over n-windows in an array.
+
 ## examples
+
+### highly readable
+
+Todo.
+
+### highly performant
+
+Todo.
+
+### edge cases
 
 Todo.
