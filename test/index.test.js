@@ -14,7 +14,7 @@ describe("fowWindow", function(){
       forWindow(0, parent, task);
       expect(taskCalled).to.equal(0);
     })
-    it("should run tasks with correct start and end indexes for window size === 1", function(){
+    it("should run tasks with correct indexes for window size === 1", function(){
       let taskCalled = 0, parent = [1,2,3,4], expectedIndexes = [[0,1], [1,2], [2,3], [3,4]]
       forWindow(1, parent, (start, end) => {
         const expectedIndex = expectedIndexes[taskCalled++];
@@ -23,7 +23,7 @@ describe("fowWindow", function(){
       })
       expect(taskCalled).to.equal(4)
     })
-    it("should run tasks with correct start and end indexes for window size > 1", function(){
+    it("should run tasks with correct indexes for window size > 1", function(){
       let taskCalled = 0, parent = [1,2,3,4], expectedIndexes = [[0,2], [1,3], [2,4]]
       forWindow(2, parent, (start, end) => {
         const expectedIndex = expectedIndexes[taskCalled++];
